@@ -52,4 +52,4 @@ api.add_resource(StoreList, '/stores')
 # if app.py is imported, the flask app is not ran
 if __name__ == '__main__':
     db.init_app(app)
-    app.run(port=5000, debug=True)
+    app.run(debug=True)
