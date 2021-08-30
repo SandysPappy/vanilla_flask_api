@@ -7,7 +7,6 @@ from flask_restful import Api
 from flask_jwt import JWT
 
 from security import authenticate, identity
-from db import db
 
 from resources.user import UserRegister
 from resources.item import ItemList, Item
@@ -31,9 +30,11 @@ api = Api(app)
 
 # creates the tables if they don't exist already
 # each resource is found in the previous resource imports
-@app.before_first_request
-def create_tables():
-    db.create_all()
+
+# moved to the run.py file for deployment reasons
+# @app.before_first_request
+# def create_tables():
+#     db.create_all()
 
 jwt = JWT(app, authenticate, identity) # JWT creates endpoint /auth
 # when we call /auth, it send it a username and password, and sends it
